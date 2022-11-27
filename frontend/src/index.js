@@ -1,12 +1,18 @@
-import _ from 'lodash';
+import axios from 'axios';
 
-function component() {
+axios.get('http://127.0.0.1:9000/bela')
+.then (response => {
+  document.body.appendChild(component(response.data.name));
+  console.log(response.data);
+}, error => {console.log(error);
+})
+
+function component(name) {
     const element = document.createElement('div');
+    element.innerHTML = name;
   
-     // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    
   
     return element;
   }
   
-  document.body.appendChild(component());
